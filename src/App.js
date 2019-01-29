@@ -1,21 +1,18 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import LectureGoalList from './component/LectureGoalList';
 
 class App extends Component {
   render() {
-    debugger;
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            shine Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React
-          </a>
+          <img src={logo} className="App-logo" alt="logo" height={10} />
+          <p>Welcome to React</p>
         </header>
+        /* 별도 작성한 LectureGoalList 컴포넌트 호출 */
+        <LectureGoalList />
       </div>
     );
   }

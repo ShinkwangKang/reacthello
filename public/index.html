@@ -30,47 +30,5 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
-  <div>
-    <h2>여기는 react 와 관련 없는 영역.</h2>
-    <div id="test">여기를 클릭하세요.!</div>
-  </div>
-
-    <script>
-      document.getElementById('test').addEventListener('mouseenter', clickHandler)
-      function clickHandler(e){
-        console.log(e.arguments)
-        console.log(this)
-      }
-      <!--
-      var x=1;
-      var obj = {
-        x:1,
-        y:2,
-        m1:function(n){
-          console.log(n,this)
-        }
-      }
-      <!-- this는 누구일까?
-      obj.m1(23)
-      -->
-
-
-      var x = 1;
-      class X {
-        state = {
-          x:1,
-          y:2
-        }
-        render(){
-          console.log(this)
-
-          this.state.x =2
-        }
-      }
-
-      var x = new X();
-      x.render();
-
-    </script>
   </body>
 </html>
