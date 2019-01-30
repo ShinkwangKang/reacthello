@@ -16,12 +16,30 @@ const Preview = props => {
   );
 };
 class MarkEditor extends React.Component {
+  state = {
+    value: '',
+  };
+
+  /*
+  // 인자가 1개 일때 ()를 생략가능
+  handleTextChange = (e, a) => {
+    console.log(e.target, e.target.value);
+  };
+  */
+  // {} 를 사용하면 값을 꺼내 사용할수 있음.
+  handleTextChange = ({target}) => {
+    this.setState({
+      value: target.value,
+    });
+    console.log(target, target.value);
+  };
+
   render() {
     return (
       <div>
         <h2>마크다운 에디터</h2>
-        <Preview value={'# markdown-it'} />
-        <input type="text" defaultValue="" />
+        <Preview value={this.state.value} />
+        <input type="text" defaultValue="" onChange={this.handleTextChange} />
       </div>
     );
   }
