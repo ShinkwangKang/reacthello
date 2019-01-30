@@ -39,7 +39,7 @@ class MarkEditor extends React.Component {
       <div>
         <h2>마크다운 에디터</h2>
         <Preview value={this.state.value} />
-        <input type="text" defaultValue="" onChange={this.handleTextChange} />
+        <textarea onChange={this.handleTextChange} />
       </div>
     );
   }
