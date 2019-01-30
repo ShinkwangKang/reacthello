@@ -5,6 +5,7 @@ import Timer from './component/Timer';
 import Toggle from './component/Toggle';
 import Header from './component/Header';
 import MarkEditor from './component/MarkEditor';
+import ControlledForm from './component/ControlledForm';
 
 class App extends Component {
   /*
@@ -40,6 +41,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <ControlledForm />
         <MarkEditor />
         <Header />
         <Toggle />
