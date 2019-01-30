@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-//import './App.css';
+import './App.css';
 import Todos from './component/Todos';
 import Timer from './component/Timer';
 import Toggle from './component/Toggle';
 import Header from './component/Header';
+import MarkEditor from './component/MarkEditor';
 
 class App extends Component {
   /*
@@ -39,6 +40,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <MarkEditor />
         <Header />
         <Toggle />
       </div>
