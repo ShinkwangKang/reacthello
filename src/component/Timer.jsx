@@ -35,8 +35,15 @@ class Timer extends React.Component {
   componentDidUpdate() {
     //console.log('componentDidUpdate');
     if (this.checkExpired()) {
-      clearInterval(this.nTimer);
+      // 시간지나면 callback 호출 하여 종료 되었음을 알림.
+      this.props.onExpired('강의종료시간이 되었습니다.');
     }
+  }
+
+  componentWillUnmount() {
+    // 타이머 종료시키자
+    clearInterval(this.nTimer);
+    console.log('clearInterval OK!!!');
   }
 
   render() {
@@ -44,16 +51,10 @@ class Timer extends React.Component {
     const {mtNow} = this.state;
     const mtExpire = moment(expireDate);
 
-    //console.log(expireDate, mtNow.format('a hh:mm'));
-
-    const isExpire = mtExpire < mtNow;
-
-    console.log(onExpired('히히'));
-
     return (
       <div className="Timer">
         <div>현재시간은 {mtNow.format('a hh:mm')}</div>
-        {isExpire ? (
+        {this.checkExpired() ? (
           <div>금일 강의 종료 되었습니다.</div>
         ) : (
           <div>금일 강의 종료까지 {mtExpire.fromNow()} 남았습니다.</div>
