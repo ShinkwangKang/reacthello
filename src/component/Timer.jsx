@@ -13,25 +13,51 @@ class Timer extends React.Component {
     };
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({
-        mtNow: moment(),
-      });
-    }, 1000);
-  }
-
-  render() {
+  checkExpired = () => {
     const {expireDate} = this.props;
     const {mtNow} = this.state;
     const mtExpire = moment(expireDate);
+    // 비교 후 값 리턴
+    return mtExpire < mtNow;
+  };
 
-    console.log(expireDate, mtNow.format('a hh:mm'));
+  componentDidMount() {
+    console.log('componentDidMount');
+    if (!this.checkExpired()) {
+      this.nTimer = setInterval(() => {
+        this.setState({
+          mtNow: moment(),
+        });
+      }, 1000);
+    }
+  }
+
+  componentDidUpdate() {
+    //console.log('componentDidUpdate');
+    if (this.checkExpired()) {
+      clearInterval(this.nTimer);
+    }
+  }
+
+  render() {
+    const {expireDate, onExpired} = this.props;
+    const {mtNow} = this.state;
+    const mtExpire = moment(expireDate);
+
+    //console.log(expireDate, mtNow.format('a hh:mm'));
+
+    const isExpire = mtExpire < mtNow;
+
+    console.log(onExpired('히히'));
 
     return (
       <div className="Timer">
         <div>현재시간은 {mtNow.format('a hh:mm')}</div>
-        <div>금일 강의 종료까지 {mtExpire.fromNow()}분 남았습니다.</div>
+        {isExpire ? (
+          <div>금일 강의 종료 되었습니다.</div>
+        ) : (
+          <div>금일 강의 종료까지 {mtExpire.fromNow()} 남았습니다.</div>
+        )}
       </div>
     );
   }
