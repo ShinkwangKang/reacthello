@@ -24,11 +24,53 @@
     -->
     <title>React App</title>
 
-
+    <style>
+      .box{
+        boder: 1px solid #282c34;
+        width: 100px;
+        height: 100px;
+      }
+      .red{
+        background-color: red;
+        position: relative;
+        width: 90px;
+        height: 90px;
+        left: 150px;
+        top: 0px
+      }
+      .blue{
+        background-color: blue;
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        right: 20px;
+        bottom: 20px;
+      }
+      .green{
+        background-color: green;
+        width: 25px;
+        height: 25px;
+      }
+      .yellow{
+        background-color: yellow;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
+    <div id="box1" class="box red">
+      box1
+      <div id="box2" class="box blue">
+        box2
+        <div id="box3" class="box green">
+          box3
+        </div>
+      </div>
+    </div>
+    <div id="box4" class="box yellow">
+      box4
+    </div>
   </body>
 </html>
